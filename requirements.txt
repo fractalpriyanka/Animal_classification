@@ -1,0 +1,5 @@
+streamlit
+tensorflow  # or keras if you're using Keras
+pillow  # for image processing
+numpy
+pandas
