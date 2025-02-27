@@ -4,7 +4,8 @@ import numpy as np
 from PIL import Image
 import tensorflow as tf
 
-
+# Load the model (make sure the model is saved in your working directory or specify the full path)
+model = tf.keras.models.load_model('./my_model.h5')
     
     
 # Class labels for your model (example, adjust to your model's labels)
