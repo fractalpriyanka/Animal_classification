@@ -52,6 +52,7 @@ Install the necessary packages with: **pip install -r requirements.txt**
 
 ![Predicted Result1](https://github.com/fractalpriyanka/Animal_classification/blob/main/predicted_images/predicted%20image%204.png?raw=true)
 ![Predicted Result2](https://github.com/fractalpriyanka/Animal_classification/blob/main/predicted_images/predicted%20image%206.png?raw=true)
+![Predicted Result2](https://github.com/fractalpriyanka/Animal_classification/blob/main/predicted_images/predicted%20image%202.png?raw=true)
 
 ---
 
