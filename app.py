@@ -1,41 +1,42 @@
 import streamlit as st
-from tensorflow.keras.preprocessing import image
+import tensorflow as tf
 import numpy as np
 from PIL import Image
-import tensorflow as tf
 
-# Load the model (make sure the model is saved in your working directory or specify the full path)
-model = tf.keras.models.load_model('./my_model.h5')
-    
-    
-# Class labels for your model (example, adjust to your model's labels)
-class_labels = {0: 'cat', 1: 'dog', 2: 'snake'}
+# Load your trained model
+model = tf.keras.models.load_model("./my_model.h5")
 
-# Function to preprocess the image and make predictions
-def predict_image(img):
-    img = img.resize((224, 224))  # Resize image to match model input size (224x224 is common)
-    img_array = np.array(img)  # Convert image to array
-    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
-    img_array = img_array / 255.0  # Normalize if required by the model
+# Define the known classes (update this with your trained classes)
+known_classes = ["cat", "dog", "snakes"]  # Example classes
 
-    # Make the prediction
-    prediction = model.predict(img_array)
-    predicted_class = np.argmax(prediction, axis=1)
-    return predicted_class
+def preprocess_image(image):
+    image = image.resize((224, 224))  # Adjust according to your model input size
+    image = np.array(image) / 255.0  # Normalize
+    image = np.expand_dims(image, axis=0)  # Add batch dimension
+    return image
 
-# Streamlit app interface
-st.title('Image Classification with Streamlit')
+# Streamlit UI
+st.title("Animal Classification Model")
 
-st.write("Upload an image to classify")
-
-# File uploader to upload an image
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
+uploaded_file = st.file_uploader("Upload an image...", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
-    # Display the image
-    img = Image.open(uploaded_file)
-    st.image(img, caption="Uploaded Image.", use_column_width=True)
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Image.", use_column_width=True)
 
-    # Make prediction
-    predicted_class = predict_image(img)
-    st.write(f"Predicted Class: {class_labels[predicted_class[0]]}")
+    # Preprocess image
+    processed_image = preprocess_image(image)
+
+    # Predict the class
+    predictions = model.predict(processed_image)
+    predicted_class_index = np.argmax(predictions)
+    confidence = np.max(predictions)
+
+    # Get class label
+    predicted_label = known_classes[predicted_class_index] if predicted_class_index < len(known_classes) else "Unknown"
+
+    # If class is unknown, show a warning
+    if predicted_label not in known_classes or confidence < 0.6:  # Threshold for confidence
+        st.warning("Hey I'm not capable of recognizing this !")
+    else:
+        st.header(f"Predicted class: {predicted_label}")
