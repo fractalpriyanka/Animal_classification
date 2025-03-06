@@ -11,7 +11,7 @@ This project classifies images of **Cats**, **Dogs**, and **Snakes** using a Con
 ## Key Features:
 - **Model**: VGG16 pre-trained and fine-tuned for animal classification.
 - **Deployment**: Streamlit app for easy, interactive use.
-- **Saved Model**: The model is saved as `model.h5` for reuse.
+- **Saved Model**: The model is saved as `my_model.h5` for reuse.
 
 ---
 
