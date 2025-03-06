@@ -67,6 +67,6 @@ This project demonstrates using the **VGG16** pre-trained model for image classi
 
 ---
 
-== License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/fractalpriyanka/Animal_classification/blob/main/LICENSE) file for details.
