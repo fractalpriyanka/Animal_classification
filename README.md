@@ -3,7 +3,7 @@
 ![Animal Classification](https://media.istockphoto.com/id/106457209/photo/group-of-pets-dog-cat-bird-reptile-rodent-ferret-fish.jpg?s=612x612&w=0&k=20&c=GbbKTrJxNkR9iN7UPbK510fn6WzVnFzB1lpe8xE1eDs=)
 
 ### Link to Kaggle Model Training: 
-`https://www.kaggle.com/code/geekypriyanka/animal-classification`
+[https://www.kaggle.com/code/geekypriyanka/animal-classification]
 
 ## Overview
 This project classifies images of **Cats**, **Dogs**, and **Snakes** using a Convolutional Neural Network (CNN) with a pre-trained **VGG16** model. The trained model is deployed on a local **Streamlit** app.
